@@ -1,0 +1,4 @@
+{{ if eq .chezmoi.os "windows" -}}
+# winget-hash: {{ include ".chezmoidata/winget_packages.json" | sha256sum }}
+winget import -i "{{ .chezmoi.sourceDir }}/.chezmoidata/winget_packages.json" --accept-source-agreements --accept-package-agreements --ignore-versions
+{{- end }}

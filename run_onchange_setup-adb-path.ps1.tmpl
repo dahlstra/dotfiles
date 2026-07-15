@@ -1,0 +1,12 @@
+{{ if and (eq .chezmoi.os "windows") .is_work -}}
+$adbPath = "$env:LOCALAPPDATA\Android\Sdk\platform-tools"
+$currentUserPath = [Environment]::GetEnvironmentVariable("Path", "User")
+$paths = $currentUserPath -split ";" | Where-Object { $_ }
+if ($paths -notcontains $adbPath) {
+    $newPath = ($paths + $adbPath) -join ";"
+    [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+    Write-Host "Added $adbPath to User PATH"
+} else {
+    Write-Host "$adbPath already in User PATH"
+}
+{{- end }}

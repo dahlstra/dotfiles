@@ -1,0 +1,9 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $isWork := promptBoolOnce . "is_work" "Is this a work machine?" -}}
+{{- $reposDir := promptStringOnce . "repos_dir" "Path to repos directory" -}}
+
+[data]
+    name = "Cory Dahlstrand"
+    email = {{ $email | quote }}
+    is_work = {{ $isWork }}
+    repos_dir = {{ $reposDir | quote }}

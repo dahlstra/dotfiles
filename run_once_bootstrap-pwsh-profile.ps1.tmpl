@@ -1,0 +1,14 @@
+{{ if eq .chezmoi.os "windows" -}}
+$profileSource = "{{ .chezmoi.homeDir }}/.config/powershell/profile.ps1"
+$myDocs = [Environment]::GetFolderPath('MyDocuments')
+$pwshProfileDir = Join-Path $myDocs "PowerShell"
+$pwshProfilePath = Join-Path $pwshProfileDir "Microsoft.PowerShell_profile.ps1"
+
+if (-not (Test-Path $pwshProfileDir)) {
+    New-Item -ItemType Directory -Path $pwshProfileDir -Force | Out-Null
+}
+
+$stub = ". `"$profileSource`""
+Set-Content -Path $pwshProfilePath -Value $stub -Encoding utf8
+Write-Host "Wrote pwsh profile stub at $pwshProfilePath -> sources $profileSource"
+{{- end }}

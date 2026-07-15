@@ -1,0 +1,21 @@
+[user]
+	name = Cory Dahlstrand
+	email = {{ .email }}
+[alias]
+	l = !git status && git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -15
+	pushf = push --force-with-lease
+	pushup = push -u origin HEAD
+	sq = "!sq() { git reset --soft HEAD~$1; git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; }; sq"
+	last = log -1 HEAD
+	amend = commit -a --amend --no-edit
+	s = status
+	todo = grep -nEI \"TODO.*Cory\"
+	cl = "!cl() { git remote prune origin; git branch -vv | grep ': gone]' | awk '{ print $1; }' | xargs -r git branch -D; }; cl"
+	ucrb = "!f() { git checkout $1 && git pull && git cl && git checkout $2 && git rebase $1; }; f"
+	aliases = "!git config -l | grep alias | cut -c 7-"
+[pull]
+	rebase = true
+[core]
+	editor = \"code\" --wait
+[rebase]
+	instructionFormat = %s (%cr) <%an>

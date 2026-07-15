@@ -1,0 +1,10 @@
+README.md
+fonts
+{{ if ne .chezmoi.os "windows" }}
+AppData
+.config/powershell
+run_once_bootstrap-pwsh-profile.ps1
+run_onchange_install-winget.ps1
+run_onchange_install-fonts.ps1
+run_onchange_setup-adb-path.ps1
+{{ end }}

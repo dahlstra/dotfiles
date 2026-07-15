@@ -1,0 +1,108 @@
+if ($PSVersionTable.PSVersion -ge [Version]"7.2") {
+    $PSStyle.FileInfo.Directory = "`e[34m"
+}
+
+Set-Location "{{ .repos_dir }}"
+
+function Open-WinUtil {
+    Invoke-RestMethod "https://christitus.com/win" | Invoke-Expression
+}
+Set-Alias winutil Open-WinUtil
+
+function Add-OrImportModule {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$ModuleName
+    )
+
+    if (Get-Module -ListAvailable -Name $ModuleName) {
+        Import-Module $ModuleName
+    } 
+    else {
+        Install-Module $ModuleName
+    }
+}
+
+Add-OrImportModule posh-git
+Add-OrImportModule PsFzf
+
+function Open-Solution() {
+    param(
+        [string]$RootDirectory = ''
+    )
+    $solutions = Get-ChildItem -Recurse -Depth 2 -Path "$RootDirectory*.sln"
+    if ($solutions.Count -eq 1) {
+        & $solutions.FullName
+    }
+    elseif ($solutions.Count -eq 0) {
+        Write-Host "No solution files found"
+    }
+    elseif ($solutions.Count -gt 1) {
+        Write-Host "Multiple solutions found. Which one do you want to open?"
+
+        for ($i = 0; $i -lt $solutions.Count; $i++) {
+            Write-Host "$($i + 1): $($solutions[$i].FullName)"
+        }
+
+        do {
+            $selection = Read-Host "Enter the number of the solution you want to open"
+    
+            $selectionIndex = $selection -as [int]
+    
+            if ($selectionIndex -and $selectionIndex -ge 1 -and $selectionIndex -le $solutions.Count) {
+                & $solutions[$selectionIndex - 1].FullName
+                $validInput = $true
+            }
+            else {
+                Write-Host "Invalid selection. Please enter a number between 1 and $($solutions.Count)." -ForegroundColor Red
+                $validInput = $false
+            }
+    
+        } while (-not $validInput)
+    }
+}
+Set-Alias vs Open-Solution
+
+{{ if .is_work -}}
+function Open-Estimates {
+    Open-Browser "https://dev.azure.com/lakeshorecryotronics/Lake%20Shore%20Dev/_apps/hub/ms-devlabs.estimate.estimate-hub#/"
+}
+Set-Alias estimate Open-Estimates
+
+function Open-PullRequests {
+    param (
+        [switch]$All
+    )
+
+    if ($All) {
+        Open-Browser "https://dev.azure.com/lakeshorecryotronics/_pulls"
+    }
+    else {
+        $location = [IO.Path]::GetFileName($pwd)
+        Open-Browser "https://dev.azure.com/lakeshorecryotronics/Lake%20Shore%20Dev/_git/$location/pullrequests?_a=mine"
+    }
+
+}
+Set-Alias prs Open-PullRequests
+{{ end -}}
+
+function Open-Browser {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Url
+    )
+
+    Start-Process $Url
+}
+Set-Alias browser Open-Browser
+
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+
+function Invoke-Starship-PreCommand {
+    $location = [IO.Path]::GetFileName($pwd)
+
+    $host.ui.RawUI.WindowTitle = "$location"
+}
+  
+Invoke-Expression (&starship init powershell)
+Invoke-Expression (& { (zoxide init powershell | Out-String) })

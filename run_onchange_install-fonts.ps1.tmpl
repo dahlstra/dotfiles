@@ -1,0 +1,38 @@
+{{ if eq .chezmoi.os "windows" -}}
+# fonts-hash: {{ include "fonts/Hack.zip" | sha256sum }}
+$zipPath = "{{ .chezmoi.sourceDir }}/fonts/Hack.zip"
+$destFolder = "$env:LOCALAPPDATA\Microsoft\Windows\Fonts\Hack"
+$tempExtract = Join-Path $env:TEMP "chezmoi-hack-fonts"
+
+if (Test-Path $tempExtract) { Remove-Item $tempExtract -Recurse -Force }
+New-Item -ItemType Directory -Path $tempExtract | Out-Null
+Expand-Archive -Path $zipPath -DestinationPath $tempExtract -Force
+
+if (-not (Test-Path $destFolder)) {
+    New-Item -ItemType Directory -Path $destFolder -Force | Out-Null
+}
+
+$fontsRegPath = "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts"
+$monoFonts = Get-ChildItem -Path $tempExtract -Filter "HackNerdFontMono-*.ttf"
+foreach ($file in $monoFonts) {
+    $destPath = Join-Path $destFolder $file.Name
+    $copied = $false
+    try {
+        Copy-Item -Path $file.FullName -Destination $destPath -Force -ErrorAction Stop
+        $copied = $true
+    } catch {
+        if (-not (Test-Path $destPath)) {
+            Write-Error "Failed to install $($file.Name): $_"
+            continue
+        }
+    }
+    Set-ItemProperty -Path $fontsRegPath -Name $file.Name -Value $destPath
+    if ($copied) {
+        Write-Host "Installed $($file.Name)"
+    } else {
+        Write-Host "Kept existing $($file.Name) (in use); registration refreshed"
+    }
+}
+
+Remove-Item $tempExtract -Recurse -Force
+{{- end }}
