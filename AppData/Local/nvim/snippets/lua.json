@@ -1,0 +1,20 @@
+{
+    "localFunction": {
+        "prefix": "locfn",
+        "description": "Local Lua function",
+        "body": [
+            "local function ${1}()",
+            "\t${0}",
+            "end"
+        ]
+    },
+    "function": {
+        "prefix": "fn",
+        "description": "Lua function",
+        "body": [
+            "function ${1}()",
+            "\t${0}",
+            "end"
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+require("globals")
+require("general-options")
+require("general-keymaps")
+require("autocommands")
+require("snacks-nvim")
+require("mason-nvim")
+require("lsp.lsp_client_config")
