@@ -59,7 +59,7 @@ config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_padding = {
     left = 5,
     right = 5,
-    top = 7.5,
+    top = 10,
     bottom = 5,
 }
 config.window_frame = {
