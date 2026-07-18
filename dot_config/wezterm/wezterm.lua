@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local config = wezterm.config_builder()
+local home = wezterm.home_dir
 
 config.command_palette_fg_color = '#b4befe'
 config.command_palette_bg_color = '#0c0b0f'
@@ -24,7 +25,7 @@ config.front_end = "OpenGL"
 config.background = {
     {
         source = {
-            File = "C:\\Users\\dahls\\OneDrive\\Documents\\totoro.jpg",
+            File = home .. "/OneDrive/Documents/totoro.jpg",
         },
         horizontal_align = "Center",
     },
@@ -37,23 +38,17 @@ config.background = {
         opacity = 0.88,
     },
 }
+
 config.max_fps = 144
 config.window_decorations = "RESIZE"
-config.hide_tab_bar_if_only_one_tab = true
-config.tab_max_width = 23
-config.show_tab_index_in_tab_bar = false
 config.switch_to_last_active_tab_when_closing_tab = true
 config.animation_fps = 144
 config.cursor_blink_rate = 900
 config.cursor_blink_ease_in = "EaseOut"
 config.cursor_blink_ease_out = "EaseOut"
 config.automatically_reload_config = true
-config.use_fancy_tab_bar = true
 config.window_close_confirmation = "NeverPrompt"
 config.default_cursor_style = "BlinkingBar"
-config.color_scheme = "Catppuccin Mocha"
-config.font = wezterm.font("Hack Nerd Font Mono")
-config.font_size = 11
 config.initial_cols = 80
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.window_padding = {
@@ -61,11 +56,6 @@ config.window_padding = {
     right = 5,
     top = 10,
     bottom = 5,
-}
-config.window_frame = {
-    font_size = 11,
-    font = wezterm.font({ family = "Hack Nerd Font Mono", weight = "Regular" }),
-    active_titlebar_bg = '#181825',
 }
 
 config.keys = {
@@ -141,9 +131,6 @@ config.keys = {
         action = act.PromptInputLine {
             description = 'Enter new name for tab',
             action = wezterm.action_callback(function(window, _, line)
-                -- line will be `nil` if they hit escape without entering anything
-                -- An empty string if they just hit enter
-                -- Or the actual line of text they wrote
                 if line then
                     window:active_tab():set_title(line)
                 end
@@ -188,6 +175,7 @@ config.font_size = 12
 
 -- General tab bar look
 config.enable_tab_bar = true
+config.show_tab_index_in_tab_bar = false
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = false
