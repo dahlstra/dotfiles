@@ -21,7 +21,7 @@ config.visual_bell = {
     fade_out_duration_ms = 250,
     target = 'CursorColor',
 }
-config.front_end = "OpenGL"
+config.front_end = "WebGpu"
 config.background = {
     {
         source = {
@@ -55,7 +55,7 @@ config.window_padding = {
     left = 5,
     right = 5,
     top = 10,
-    bottom = 5,
+    bottom = 0,
 }
 
 config.keys = {
@@ -286,8 +286,13 @@ wezterm.on("format-tab-title", function(tab, _, _, cfg, hover, _)
   local icon = get_process_icon(tab)
 
   local max_title_width = cfg.tab_max_width - 8
+  local min_tab_width = 10
   if #title > max_title_width then
     title = wezterm.truncate_right(title, max_title_width) .. "…"
+  end
+
+  if #title < min_tab_width then
+      title = title .. string.rep(" ", min_tab_width - #title - 1)
   end
 
   return {

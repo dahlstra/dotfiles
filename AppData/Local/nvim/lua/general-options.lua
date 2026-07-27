@@ -22,7 +22,7 @@ vim.o.grepformat = "%f:%l:%c:%m" -- filename, line number, column, content
 vim.o.ignorecase = true -- Case insensitive search
 vim.o.smartcase = true  -- Case sensitive if uppercase in search
 vim.o.hlsearch = true   -- Don't highlight search results
-vim.o.incsearch = true  -- Show matches as you typee
+vim.o.incsearch = true  -- Show matches as you type
 
 -- Visual settings
 vim.o.termguicolors = true        -- Enable 24-bit colors
@@ -48,7 +48,7 @@ local undodir = "~/.local/share/nvim/undodir"
 vim.o.undodir = vim.fn.expand(undodir)
 local undodir_path = vim.fn.expand(undodir)
 if vim.fn.isdirectory(undodir_path) == 0 then
-    vim.fn.mkdir(undodir_path, "p")
+   vim.fn.mkdir(undodir_path, "p")
 end
 
 -- File handling
@@ -85,9 +85,7 @@ vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Folding settings
-vim.o.foldmethod = "expr"                     -- Use expression for folding
-vim.o.foldexpr = "nvim_treesitter#foldexpr()" -- Use treesitter for folding
-vim.o.foldlevel = 99                          -- Start with all folds open
+vim.o.foldmethod = "manual"
 
 -- Split behavior
 vim.o.splitbelow = true -- Horizontal splits go below
@@ -95,31 +93,31 @@ vim.o.splitright = true -- Vertical splits go right
 
 -- Set the shell
 if vim.fn.has("win32") == 1 then
-    vim.o.shell = "pwsh.exe"
+   vim.o.shell = "pwsh.exe"
 end
 
 -- Diagnostic Config & Keymaps
 --  See `:help vim.diagnostic.Opts`
 vim.diagnostic.config {
-    update_in_insert = false,
-    severity_sort = true,
-    float = { border = "rounded", source = "if_many" },
-    underline = { severity = { min = vim.diagnostic.severity.WARN } },
+   update_in_insert = false,
+   severity_sort = true,
+   float = { border = "rounded", source = "if_many" },
+   underline = { severity = { min = vim.diagnostic.severity.WARN } },
 
-    -- Can switch between these as you prefer
-    virtual_text = true,   -- Text shows up at the end of the line
-    virtual_lines = false, -- Text shows up underneath the line, with virtual lines
+   -- Can switch between these as you prefer
+   virtual_text = true,    -- Text shows up at the end of the line
+   virtual_lines = false,  -- Text shows up underneath the line, with virtual lines
 
-    -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
-    jump = {
-        on_jump = function(_, bufnr)
-            vim.diagnostic.open_float {
-                bufnr = bufnr,
-                scope = "cursor",
-                focus = false,
-            }
-        end,
-    },
+   -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
+   jump = {
+      on_jump = function(_, bufnr)
+         vim.diagnostic.open_float {
+            bufnr = bufnr,
+            scope = "cursor",
+            focus = false,
+         }
+      end,
+   },
 }
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })

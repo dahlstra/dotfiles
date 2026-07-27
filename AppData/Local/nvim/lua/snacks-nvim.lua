@@ -1,36 +1,34 @@
 vim.pack.add({
-    "https://github.com/folke/snacks.nvim",
+  "https://github.com/folke/snacks.nvim",
 })
 
 require("snacks").setup({
-    bigfile = {
-        enabled = true
-    },
-    quickfile = {
-        enabled = true
-    },
-    lazygit = {
-        enabled = true
-    },
-    picker = {
-        enabled = true
-    },
-    notifier = {
-        enabled = true,
-        timeout = 5000
-    },
-    statuscolumn = {
-        enabled = true
-    },
-    scratch = {
-        enabled = true
-    },
+  quickfile = {
+    enabled = true,
+  },
+  lazygit = {
+    enabled = true,
+  },
+  picker = {
+    enabled = true,
+  },
+  notifier = {
+    enabled = true,
+    timeout = 5000,
+  },
+  statuscolumn = {
+    enabled = true,
+  },
+  words = {
+    enabled = true,
+  },
 })
 
 ---@diagnostic disable: undefined-global
 local picker = Snacks.picker
 
 vim.keymap.set("n", "<leader>ff", picker.files, { desc = "Find Files" })
+vim.keymap.set("n", "<leader>fs", picker.smart, { desc = "Smart Search" })
 vim.keymap.set("n", "<leader>fg", picker.grep, { desc = "Live Grep" })
 vim.keymap.set("n", "<leader>fb", picker.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<leader>/", picker.lines, { desc = "Buffer Lines" })
@@ -42,20 +40,20 @@ vim.keymap.set({ "n", "x" }, "<leader>fw", picker.grep_word, { desc = "Visual se
 vim.keymap.set("n", "<leader>?h", picker.help, { desc = "Help Pages" })
 vim.keymap.set("n", "<leader>?c", picker.commands, { desc = "Commands" })
 vim.keymap.set("n", "<leader>?k", picker.keymaps, { desc = "Keymaps" })
-vim.keymap.set("n", "<leader>.", function() Snacks.scratch() end, { desc = "Toggle Scratch Buffer" })
-vim.keymap.set("n", "<leader>S", function() Snacks.scratch.select() end, { desc = "Select Scratch Buffer" })
+vim.keymap.set("n", "<leader>fm", picker.marks, { desc = "Marks" })
+vim.keymap.set("n", "<leader>fn", picker.notifications, { desc = "Notifications" })
 
 vim.api.nvim_create_autocmd("LspProgress", {
-    ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-    callback = function(ev)
-        local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-        vim.notify(vim.lsp.status(), vim.log.levels.INFO, {
-            id = "lsp_progress",
-            title = vim.lsp.get_client_by_id(ev.data.client_id).name,
-            opts = function(notif)
-                notif.icon = ev.data.params.value.kind == "end" and " "
-                    or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-            end,
-        })
-    end,
+  ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+  callback = function(ev)
+    local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+    vim.notify(vim.lsp.status(), vim.log.levels.INFO, {
+      id = "lsp_progress",
+      title = vim.lsp.get_client_by_id(ev.data.client_id).name,
+      opts = function(notif)
+        notif.icon = ev.data.params.value.kind == "end" and " "
+          or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+      end,
+    })
+  end,
 })

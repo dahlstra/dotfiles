@@ -1,23 +1,23 @@
 -- Search highlight
 vim.keymap.set("n", "<ESC>", "<cmd>nohl<CR>", { desc = "Remove search highlights in normal mode" })
 
+-- Easy line beginning and end
+vim.keymap.set({ "n", "v" }, "<A-l>", "$", { desc = "Move to end of the line" })
+vim.keymap.set({ "n", "v" }, "<A-h>", "0", { desc = "Move to beginning of the line" })
+
 -- Buffers
-vim.keymap.set("n", "<leader>bn", "<cmd>enew<CR>", { desc = "New buffer", })
-vim.keymap.set("n", "<leader>bw", "<cmd>w<CR>", { desc = "Save buffer", })
-vim.keymap.set("n", "<leader>bW", "<cmd>wa<CR>", { desc = "Save all buffers", })
-vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer, unless unsaved", })
-vim.keymap.set("n", "<leader>bD", "<cmd>bdelete!<CR>", { desc = "Delete buffer, no saving", })
+vim.keymap.set("n", "<leader>bn", "<cmd>enew<CR>", { desc = "New buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer, unless unsaved" })
+vim.keymap.set("n", "<leader>bD", "<cmd>bdelete!<CR>", { desc = "Delete buffer, no saving" })
 
 -- Center the cursor while moving around
-vim.keymap.set("n", "G", "Gzz")
-vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "N", "Nzz")
-vim.keymap.set("n", "*", "*zz")
-vim.keymap.set("n", "#", "#zz")
-vim.keymap.set("n", "g*", "g*zz")
-vim.keymap.set("n", "g#", "g#zz")
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
+vim.keymap.set("n", "G", "Gzz", { desc = "Go to end of the buffer, centering around cursor" })
+vim.keymap.set("n", "N", "Nzz", { desc = "Previous search result, centering around cursor" })
+vim.keymap.set("n", "n", "nzz", { desc = "Next search result, centering around cursor" })
+vim.keymap.set("n", "*", "*zz", { desc = "Next occurence of word under cursor, centering around cursor" })
+vim.keymap.set("n", "#", "#zz", { desc = "Previous occurence of word under cursor, centering around cursor" })
+vim.keymap.set("n", "g*", "g*zz", { desc = "Next occurence of word under cursor, centering around cursor" })
+vim.keymap.set("n", "g#", "g#zz", { desc = "Previous occurence of word under cursor, centering around cursor" })
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -47,21 +47,21 @@ vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" 
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
 -- Yank/Paste/Selection
-vim.keymap.set("v", "<leader>p", [["_dP]], { desc = "Paste without replacing clipboard content" } )
+vim.keymap.set("v", "<leader>p", [["_dP]], { desc = "Paste without replacing clipboard content" })
 vim.keymap.set({ "v", "n" }, "<leader>d", [["_d]], { desc = "Delete without replacing clipboard content" })
 vim.keymap.set("n", "x", '"_x')
-vim.keymap.set("n", "<leader>sa", "ggVG", { desc = "Select all", })
-vim.keymap.set("n", "<leader>y", "0y$", { desc = "Yank line without newline", })
+vim.keymap.set("n", "<leader>sa", "ggVG", { desc = "Select all" })
+vim.keymap.set("n", "<leader>y", "0y$", { desc = "Yank line without newline" })
 
 -- Current directory and file information
 vim.keymap.set("n", "<leader>wd", function()
-    print(vim.fn.getcwd())
+  print(vim.fn.getcwd())
 end, {
-    desc = "Print working directory",
+  desc = "Print working directory",
 })
 
 vim.keymap.set("n", "<leader>wf", function()
-    print(vim.fn.expand("%:p"))
+  print(vim.fn.expand("%:p"))
 end, {
-    desc = "Print current file",
+  desc = "Print current file",
 })

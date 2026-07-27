@@ -1,10 +1,7 @@
 vim.pack.add({
-    {
-        src = "https://github.com/mason-org/mason.nvim",
-        name = "mason",
-    },
+  "https://github.com/mason-org/mason.nvim",
 })
 
-require("mason").setup {
-    ensure_installed = { "lua_ls", "marksman", "powershell-editor-services" }
-}
+require("mason").setup({
+  ensure_installed = { "lua_ls", "marksman", "powershell-editor-services" },
+})
