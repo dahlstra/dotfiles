@@ -47,9 +47,8 @@ vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" 
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
 -- Yank/Paste/Selection
-vim.keymap.set("v", "<leader>p", [["_dP]], { desc = "Paste without replacing clipboard content" })
-vim.keymap.set({ "v", "n" }, "<leader>d", [["_d]], { desc = "Delete without replacing clipboard content" })
 vim.keymap.set("n", "x", '"_x')
+vim.keymap.set("", "<C-c>", 'y')
 vim.keymap.set("n", "<leader>sa", "ggVG", { desc = "Select all" })
 vim.keymap.set("n", "<leader>y", "0y$", { desc = "Yank line without newline" })
 

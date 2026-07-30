@@ -91,6 +91,10 @@ vim.o.foldmethod = "manual"
 vim.o.splitbelow = true -- Horizontal splits go below
 vim.o.splitright = true -- Vertical splits go right
 
+-- Disable netrw because we are using Oil
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Set the shell
 if vim.fn.has("win32") == 1 then
    vim.o.shell = "pwsh.exe"
