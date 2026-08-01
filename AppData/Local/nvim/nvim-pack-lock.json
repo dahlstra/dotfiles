@@ -45,6 +45,10 @@
       "rev": "0efc4e82094dbda2e411f7c8d44928716d00b655",
       "src": "https://github.com/dstein64/nvim-scrollview"
     },
+    "nvim-treesitter": {
+      "rev": "0f32dff7f19476629c77467f887b95e5e2d33509",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
     "nvim-treesitter-textobjects": {
       "rev": "898ee307df58f854d11cd7edd06472574d48014e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"

@@ -16,7 +16,7 @@ local function lualine_setup()
 end
 
 -- Wait 50ms to load lualine since we don't need it before the UI loads
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("UIEnter", {
   once = true,
   callback = function()
     vim.defer_fn(function()
@@ -24,6 +24,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
         "https://github.com/nvim-tree/nvim-web-devicons",
         "https://github.com/nvim-lualine/lualine.nvim",
       }, lualine_setup)
-    end, 50)
+    end, 25)
   end,
 })
