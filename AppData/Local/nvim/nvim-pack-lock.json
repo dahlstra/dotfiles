@@ -29,6 +29,10 @@
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "matchparen.nvim": {
+      "rev": "75398158ea5a4cee4f0cbbeefdbf8fb1c3343e28",
+      "src": "https://github.com/monkoose/matchparen.nvim"
+    },
     "mini.nvim": {
       "rev": "c5cdbadeb423ff724e27a42ab2d1c504d1d6fc5a",
       "src": "https://github.com/nvim-mini/mini.nvim"

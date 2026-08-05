@@ -79,8 +79,8 @@ vim.api.nvim_create_autocmd("FileType", {
     "lua",
   },
   callback = function()
-    vim.o.shiftwidth = 3
-    vim.o.tabstop = 3
+    vim.o.shiftwidth = 2
+    vim.o.tabstop = 2
   end,
 })
 

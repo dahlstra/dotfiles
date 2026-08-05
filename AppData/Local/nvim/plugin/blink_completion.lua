@@ -1,7 +1,7 @@
 vim.api.nvim_create_autocmd("InsertEnter", {
   once = true,
   callback = function()
-    require("plugin-loader").load_once("blink", {
+    require("plugin-loader").load_and_setup_once("blink", {
       {
         src = "https://github.com/saghen/blink.cmp",
         name = "blink.cmp",
@@ -61,7 +61,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
             auto_show_delay_ms = 200,
           },
         },
-
         sources = {
           default = { "lsp" },
           per_filetype = {
@@ -73,6 +72,9 @@ vim.api.nvim_create_autocmd("InsertEnter", {
           },
         },
       })
+
+      require("utils.highlights").clear_hl_background("BlinkCmpMenuBorder")
+      vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "none", fg = "#cdd6f4" })
     end)
   end,
 })
