@@ -21,6 +21,10 @@
       "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "log-highlight.nvim": {
+      "rev": "b2e00cfd41ca94338265a595f3f3f423d9f9322e",
+      "src": "https://github.com/fei6409/log-highlight.nvim"
+    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"

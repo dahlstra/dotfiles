@@ -30,12 +30,12 @@ config.background = {
     horizontal_align = "Center",
   },
   {
-    source = { Color = "#1f1f28" },
+    source = { Color = "#11111b" },
     height = "120%",
     width = "120%",
     vertical_offset = "-10%",
     horizontal_offset = "-10%",
-    opacity = 0.87,
+    opacity = 0.88,
   },
 }
 
@@ -200,7 +200,7 @@ local mocha = {
 
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("Hack Nerd Font Mono")
-config.font_size = 12
+config.font_size = 11
 
 -- General tab bar look
 config.enable_tab_bar = true
