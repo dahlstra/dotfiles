@@ -25,7 +25,7 @@ config.front_end = "OpenGL"
 config.background = {
   {
     source = {
-      File = home .. "/OneDrive/Documents/totoro.jpg",
+      File = home .. "/.config/totoro.jpg",
     },
     horizontal_align = "Center",
   },
