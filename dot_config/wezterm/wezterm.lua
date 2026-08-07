@@ -89,6 +89,11 @@ config.keys = {
     action = act.PasteFrom("Clipboard"),
   },
   {
+    key = "Enter",
+    mods = "SHIFT",
+    action = wezterm.action.SendString("\x1b\r"),
+  },
+  {
     key = "T",
     mods = "SHIFT|ALT",
     action = wezterm.action.EmitEvent("toggle-opacity"),
