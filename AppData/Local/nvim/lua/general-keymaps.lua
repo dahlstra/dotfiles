@@ -48,9 +48,11 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
 -- Yank/Paste/Selection
 vim.keymap.set("n", "x", '"_x')
-vim.keymap.set("", "<C-c>", 'y')
+vim.keymap.set("", "<C-c>", "y")
 vim.keymap.set("n", "<leader>sa", "ggVG", { desc = "Select all" })
 vim.keymap.set("n", "<leader>y", "0y$", { desc = "Yank line without newline" })
+
+vim.keymap.set("n", "<leader>m", "g<", { desc = "Message history" })
 
 -- Current directory and file information
 vim.keymap.set("n", "<leader>wd", function()
@@ -63,4 +65,42 @@ vim.keymap.set("n", "<leader>wf", function()
   print(vim.fn.expand("%:p"))
 end, {
   desc = "Print current file",
+})
+
+local function show_messages()
+    local buf = vim.api.nvim_create_buf(false, true)
+
+    vim.api.nvim_buf_set_lines(
+        buf,
+        0,
+        -1,
+        false,
+        vim.split(vim.fn.execute("messages"), "\n", { plain = true })
+    )
+
+    vim.bo[buf].buftype = "nofile"
+    vim.bo[buf].bufhidden = "wipe"
+    vim.bo[buf].swapfile = false
+    vim.bo[buf].modifiable = false
+
+    local width = math.floor(vim.o.columns * 0.8)
+    local height = math.floor(vim.o.lines * 0.7)
+
+    vim.api.nvim_open_win(buf, true, {
+        relative = "editor",
+        width = width,
+        height = height,
+        row = math.floor((vim.o.lines - height) / 2),
+        col = math.floor((vim.o.columns - width) / 2),
+        border = "rounded",
+        title = " Message History ",
+        title_pos = "center",
+    })
+
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf })
+    vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = buf })
+end
+
+vim.keymap.set("n", "<leader>m", show_messages, {
+    desc = "Show message history",
 })
