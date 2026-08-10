@@ -44,7 +44,3 @@ Do not treat small size alone as evidence for removal. Distinguish necessary pro
 Default to a concise, ranked review. For each recommendation, describe the tradeoff and confidence. Mark subjective or weakly evidenced judgments explicitly and invite the user's decision.
 
 Do not refactor unless the user asks for implementation or clearly approves a recommendation. When implementing, make the smallest change that realizes the agreed simplification and verify preserved behavior with relevant checks.
-
-## Calibrate
-
-At the end of a review, optionally ask which recommendations matched the user's preference and which did not. Use the response to inform the current conversation; do not alter this skill unless the user asks.
