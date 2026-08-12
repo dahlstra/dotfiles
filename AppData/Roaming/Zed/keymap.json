@@ -1,0 +1,489 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-alt-e": "project_panel::ToggleFocus",
+      "ctrl-alt-g": "git_panel::ToggleFocus",
+      "ctrl-alt-d": "debug_panel::ToggleFocus",
+      "ctrl-alt-o": "outline_panel::ToggleFocus",
+      "ctrl-alt-a": "agent::ToggleFocus",
+      "ctrl-alt-t": "terminal_panel::ToggleFocus",
+    },
+    "unbind": {
+      "ctrl-x": "pane::DeploySearch",
+      "ctrl-b": "workspace::ToggleLeftDock",
+      "ctrl-alt-o": "workspace::ToggleRightDock",
+      "ctrl-t": "project_symbols::Toggle",
+      "ctrl-w": "workspace::CloseActiveDock",
+      "ctrl-n": "workspace::NewFile",
+    },
+  },
+  {
+    "context": "Pane > Editor",
+    "bindings": {
+      "ctrl-;": "editor::ToggleRelativeLineNumbers",
+    },
+  },
+  {
+    "context": "Pane > Editor",
+    "bindings": {
+      "ctrl-alt-e": "pane::RevealInProjectPanel",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "ctrl-c": "editor::Copy",
+      "s a": "vim::PushAddSurrounds",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-v": "editor::Paste",
+    },
+    "unbind": {
+      "ctrl-alt-e": "editor::ToggleEditPrediction",
+    },
+  },
+  {
+    // Don't put anything involving leader in here
+    "context": "Pane || Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "right_dock == agent_panel",
+    "bindings": {
+      "ctrl-alt-a": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "bottom_dock == DebugPanel",
+    "bindings": {
+      "ctrl-alt-d": "workspace::ToggleBottomDock",
+    },
+  },
+  {
+    "context": "left_dock == ProjectPanel",
+    "bindings": {
+      "ctrl-alt-e": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "bottom_dock == TerminalPanel",
+    "bindings": {
+      "ctrl-alt-t": "workspace::ToggleBottomDock",
+    },
+  },
+  {
+    "context": "left_dock == GitPanel",
+    "bindings": {
+      "ctrl-alt-g": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "alt-shift-left": "workspace::DecreaseActiveDockSize",
+      "alt-shift-right": "workspace::IncreaseActiveDockSize",
+    },
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "DebugPanel",
+    "bindings": {
+      "ctrl-k": "workspace::FocusCenterPane",
+    },
+  },
+  {
+    "context": "OutlinePanel",
+    "bindings": {
+      "ctrl-alt-o": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "ProjectPanel && !editing",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+      "space f r": "projects::OpenRecent",
+      "space f f": "file_finder::Toggle",
+      "space f o": "workspace::Open",
+      "space f n": "workspace::NewFile",
+      "alt-shift-left": "workspace::DecreaseActiveDockSize",
+      "alt-shift-right": "workspace::IncreaseActiveDockSize",
+    },
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      "space g h d": "editor::ToggleSelectedDiffHunks",
+      "space t i": "editor::ToggleInlayHints",
+      "space u w": "editor::ToggleSoftWrap",
+      "space c z": "workspace::ToggleCenteredLayout",
+      "space m p": "markdown::OpenPreview",
+      "space m P": "markdown::OpenPreviewToTheSide",
+      "space f r": "projects::OpenRecent",
+      "space s w": "pane::DeploySearch",
+      "g f": "editor::OpenExcerpts",
+      "space s v": "pane::SplitRight",
+      "space s h": "pane::SplitDown",
+      "alt-j": "editor::MoveLineDown",
+      "alt-shift-left": "vim::ResizePaneLeft",
+      "alt-shift-right": "vim::ResizePaneRight",
+      "alt-shift-up": "vim::ResizePaneUp",
+      "alt-shift-down": "vim::ResizePaneDown",
+      "alt-k": "editor::MoveLineUp",
+      "alt-h": "editor::MoveToBeginningOfLine",
+      "alt-l": "editor::MoveToEndOfLine",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "space c r": "editor::Rename",
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      // TODO: Go to next/prev error
+      "] e": "editor::GoToDiagnostic",
+      "[ e": "editor::GoToPreviousDiagnostic",
+      "space s s": "outline::Toggle",
+      "space s S": "project_symbols::Toggle",
+      "space x x": "diagnostics::Deploy",
+      // +Git
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
+      // Close other items
+      "ctrl-wo": "pane::CloseOtherItems",
+      // Save file
+      "ctrl-s": "workspace::Save",
+      // Project search
+      "space /": "pane::DeploySearch",
+      // TODO: Open other files
+    },
+  },
+  // Empty pane, set of keybindings that are available when there is no active editor
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space f r": "projects::OpenRecent",
+      "space f o": "workspace::Open",
+      "space f n": "workspace::NewFile",
+    },
+  },
+  // Comment code
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      // visual, visual line & visual block modes
+      "g c": "editor::ToggleComments",
+    },
+  },
+  // Rename
+  {
+    "context": "Editor && vim_operator == c",
+    "bindings": {
+      "c": "vim::CurrentLine",
+      "r": "editor::Rename", // zed specific
+    },
+  },
+  // Code Action - left space c a but noted item 9
+  {
+    "context": "Editor && vim_operator == c",
+    "bindings": {
+      "c": "vim::CurrentLine",
+      "a": "editor::ToggleCodeActions", // zed specific
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-shift-t": "workspace::NewTerminal",
+      "ctrl-shift-e": "terminal::RenameTerminal",
+      "alt-shift-down": "workspace::DecreaseActiveDockSize",
+      "alt-shift-up": "workspace::IncreaseActiveDockSize",
+    },
+    "unbind": {
+      "ctrl-p": "file_finder::Toggle",
+      "ctrl-n": "workspace::NewTerminal",
+    },
+  },
+  {
+    "context": "ProjectPanel",
+    "unbind": {
+      "space": "project_panel::Open",
+    },
+  },
+  // Run nearest task
+  {
+    "context": "EmptyPane || SharedScreen || vim_mode == normal",
+    "bindings": {
+      "space r t": [
+        "editor::SpawnNearestTask",
+        {
+          "reveal": "no_focus",
+        },
+      ],
+    },
+  },
+  // Which key
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "space": null, // Disable the default action vim::WrappingRight
+    },
+  },
+  // File finding
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space f g": "pane::DeploySearch",
+    },
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space ctrl-l": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-g": "vim::ShowLocation",
+      "ctrl-t": "pane::GoToOlderTag",
+    },
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-g": ["vim::Literal", ["ctrl-g", "\u0007"]],
+    },
+  },
+  {
+    "context": "vim_mode == insert",
+    "unbind": {
+      "ctrl-t": "vim::Indent",
+    },
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-t": ["vim::Literal", ["ctrl-t", "\u0014"]],
+    },
+  },
+  {
+    "context": "ThreadsSidebar",
+    "unbind": {
+      "ctrl-g": "agents_sidebar::ToggleThreadHistory",
+    },
+  },
+  {
+    "context": "SkillCreator > Editor",
+    "unbind": {
+      "ctrl-w": "workspace::CloseWindow",
+    },
+  },
+  {
+    "context": "SkillCreator",
+    "unbind": {
+      "ctrl-w": "workspace::CloseWindow",
+    },
+  },
+  {
+    "context": "SettingsWindow",
+    "unbind": {
+      "ctrl-w": "workspace::CloseWindow",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-w": [
+        "pane::CloseActiveItem",
+        {
+          "close_pinned": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "AcpThread",
+    "unbind": {
+      "ctrl-alt-a": "agent::OpenPermissionDropdown",
+    },
+  },
+  {
+    "unbind": {
+      "ctrl-q": "zed::Quit",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-shift-b": "outline_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-p": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "FileFinder || FileFinder > Picker > Editor",
+    "unbind": {
+      "ctrl-p": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "FileFinder || FileFinder > Picker > Editor",
+    "unbind": {
+      "ctrl-p": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "(Workspace > Editor) && (vim_mode == normal)",
+    "bindings": {
+      "space f o": "workspace::Open",
+    },
+  },
+  {
+    "context": "(Workspace > Editor) && (vim_mode == normal)",
+    "bindings": {
+      "space f n": "workspace::NewFile",
+    },
+  },
+  {
+    "unbind": {
+      "ctrl-o": "workspace::OpenFiles",
+    },
+  },
+  {
+    "context": "VimControl && !Menu",
+    "bindings": {
+      "space g w": "git::Worktree",
+    },
+  },
+  {
+    "context": "VimControl && !Menu",
+    "bindings": {
+      "space g b": "git::Branch",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-alt-b": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "alt-shift-h": "editor::DeleteToPreviousSubwordStart",
+    },
+  },
+  {
+    "context": "InlineAssistant",
+    "unbind": {
+      "ctrl-[": "agent::CyclePreviousInlineAssist",
+    },
+  },
+  {
+    "context": "Editor && mode == full && edit_prediction",
+    "unbind": {
+      "alt-[": "editor::PreviousEditPrediction",
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+    "bindings": {
+      "alt-[": "vim::SelectLargerSyntaxNode",
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+    "unbind": {
+      "[ x": "vim::SelectLargerSyntaxNode",
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+    "bindings": {
+      "alt-]": "vim::SelectSmallerSyntaxNode",
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+    "unbind": {
+      "] x": "vim::SelectSmallerSyntaxNode",
+    },
+  },
+  {
+    "context": "!Editor && !Terminal",
+    "unbind": {
+      "space f": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      "space f": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "unbind": {
+      "ctrl-shift-e": "pane::RevealInProjectPanel",
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "alt-shift-right": "workspace::DecreaseActiveDockSize",
+      "alt-shift-left": "workspace::IncreaseActiveDockSize",
+    },
+    "unbind": {
+      "ctrl-shift-e": "project_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-shift-e": "project_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "SettingsWindow",
+    "unbind": {
+      "ctrl-shift-e": "settings_editor::ToggleFocusNav",
+    },
+  },
+]

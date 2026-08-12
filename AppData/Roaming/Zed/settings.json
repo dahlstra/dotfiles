@@ -1,0 +1,150 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "show_edit_predictions": false,
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+  "search": {
+    "button": false
+  },
+  "lsp_results_location": "picker",
+  "disable_ai": false,
+  "edit_predictions": {
+    "allow_data_collection": "no",
+    "provider": "zed"
+  },
+  "active_pane_modifiers": {
+    "inactive_opacity": 1.0,
+    "border_size": 0.0
+  },
+  "use_system_window_tabs": true,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "agent_buffer_font_size": 14.0,
+  "buffer_font_weight": 450.0,
+  "ui_font_weight": 500.0,
+  "ui_font_family": "Hack Nerd Font Mono",
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "agent_ui_font_size": 16.0,
+  "minimum_contrast_for_highlights": 70.0,
+  "mouse_wheel_zoom": true,
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": true,
+    "show_tab_bar_buttons": false,
+    "show": true,
+  },
+  "helix_mode": false,
+  "terminal": {
+    "flexible": true,
+    "minimum_contrast": 80.0,
+    "font_weight": 400.0,
+    "cursor_shape": "bar",
+    "toolbar": {
+      "breadcrumbs": false,
+    },
+    "font_size": 15.0,
+    "font_family": "Hack Nerd Font Mono",
+  },
+  "toolbar": {
+    "quick_actions": false,
+    "selections_menu": false,
+    "code_actions": false,
+    "agent_review": false,
+    "breadcrumbs": false,
+  },
+  "gutter": {
+    "line_numbers": true,
+  },
+  "status_bar": {
+    "cursor_position_button": false,
+    "line_endings_button": true,
+  },
+  "tabs": {
+    "show_diagnostics": "all",
+    "git_status": false,
+    "file_icons": true,
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_sign_in": false,
+    "show_branch_status_icon": false,
+  },
+  "cli_default_open_behavior": "existing_window",
+  "vim_mode": true,
+  "vim": {
+    // Yanks go to the Windows clipboard, but deletes/changes do not replace it.
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true,
+    "use_regex_search": true,
+    "highlight_on_yank_duration": 180,
+    "toggle_relative_line_numbers": true,
+  },
+  "cursor_blink": false,
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "button": false,
+    "dock": "left",
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 500,
+  },
+  "agent": {
+    "terminal_init_command": "",
+    "sidebar_side": "right",
+    "default_model": {
+      "provider": "x_ai",
+      "model": "grok-4.3",
+      "enable_thinking": true,
+      "effort": "medium"
+    },
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "icon_theme": {
+    "mode": "light",
+    "light": "Zed (Default)",
+    "dark": "Catppuccin Mocha",
+  },
+  "minimap": {
+    "thumb_border": "full",
+    "thumb": "always",
+    "show": "always",
+  },
+  "base_keymap": "VSCode",
+  "ui_font_size": 16.0,
+  "buffer_font_size": 14.0,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Maple Dark",
+  },
+  "relative_line_numbers": "enabled",
+  "buffer_line_height": {
+    "custom": 1.399999976158142,
+  },
+}

@@ -1,0 +1,14 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+  {
+    "label": "File Search",
+    "command": "cd ..; $file = $(tv files); if ($LASTEXITCODE -eq 0 -and $file) { zed $file }",
+    "hide": "always",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": true,
+    "reveal": "always",
+    "reveal_target": "dock"
+  },
+]
