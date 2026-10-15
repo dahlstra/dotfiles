@@ -61,15 +61,14 @@ Prefer one complete HTML file over fragmented snippets.
 - Use placeholder charts/tables when data visualization details are not the focus.
 - Flag fidelity risks separately: native control behavior, focus/accessibility behavior, touch/keyboard/hardware-button navigation, animation, virtualization, theme edge cases, physical ergonomics, and display constraints.
 
-## Avoid Generic AI-Looking UI
+## Design Conventions
 
-- NEVER produce generic AI aesthetics: purple gradients on white, Inter font, predictable card grids, cookie-cutter component layouts. Every output should feel designed for its specific context.
-- Anchor the UI in domain nouns, real tasks, and real failure states from the user's context.
-- Avoid generic SaaS/dashboard patterns unless the product genuinely needs them: decorative cards, vague metrics, gradient hero areas, excessive icons, pill/chip overload, and perfectly symmetric layouts.
-- Prefer labels that answer operator questions: what is selected, where data will be saved, what is safe/unsafe, what is blocked, what needs review, and what happens next.
-- Use realistic hierarchy and density for the target context. Scientific, industrial, medical, embedded, and professional tools often need restrained styling, tables, forms, logs, status panels, and explicit state labels.
-- Include non-happy-path states when relevant: disconnected hardware, invalid configuration, unsaved data, failed save, stale data, permission limits, warning thresholds, aborted operations, and incomplete metadata.
-- Avoid fake polish that hides unresolved product questions. If an element is speculative, make it visibly provisional or list it as an open question.
+Load `ui-design` for detailed guidance when available. This skill remains usable on its own; apply these baseline rules either way:
+
+- Ground composition, labels, and visual choices in the product's existing language and primitives, real user tasks, or approved direction.
+- Reject ungrounded template choices, not particular colors, fonts, or layouts. Familiar conventions are appropriate when they fit the product.
+- Match hierarchy and density to the actual content, audience, and operating context. Labels should explain the thing, state, or effect.
+- Include relevant failure states and recovery paths. Mark sample data, simulated behavior, and unresolved product questions explicitly; do not invent capabilities to fill a layout.
 - Use icons sparingly. Do not use emoji in professional/product mocks unless the target product already uses them.
 
 ## Token-Cost Rules
@@ -119,6 +118,8 @@ Do not copy large documentation verbatim. Summarize and translate into CSS varia
 
 ## Approval Gate
 
-If the user asks to create or edit project files, first state the planned approach, assumptions, and risks, then wait for approval before changing files.
+Follow the active role and approval policy, including guardrails when present. This skill adds no extra approval gate and does not expand a read-only role's write permissions.
+
+If no approval policy is supplied, a direct, specific file-change request authorizes that scope; a broad or vague request requires a proposed approach and approval before editing.
 
 Generating an HTML mock in the chat is allowed without approval because it is not a file change.

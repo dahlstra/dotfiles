@@ -5,6 +5,8 @@ applyTo: "MeasureLINK-MCS*/**/*.{cs,csproj,xaml,py,json,md}"
 
 # MeasureLINK-MCS Project Rules
 
+Apply these rules only when the repository root or edited path matches MeasureLINK-MCS*. If not, ignore the entire file, including versioning rules. Product names, namespaces, dependencies, and shared lineage do not establish applicability.
+
 ## Solution shape
 
 Large multi-project C# solution. Many shared APIs have many callers. Default to additive, localized changes. Match existing patterns; extend rather than introduce.
