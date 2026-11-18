@@ -5,6 +5,8 @@ applyTo: "**/*.cs"
 
 # C# Preferences
 
+These are personal implementation preferences, not project requirements or review criteria for code I did not author.
+
 - Keep simple, single-use logic inline.
 - Use a local function when single-use logic is complex enough to deserve a name and extracting it makes the main control flow easier to follow. Avoid hiding important state changes or ordering requirements.
 - Keep local functions close to the code that uses them, after the main path when that matches the surrounding style.

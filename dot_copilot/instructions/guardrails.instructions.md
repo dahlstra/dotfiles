@@ -5,11 +5,11 @@ applyTo: "**"
 
 # Applicability scan
 
-First step, before any investigation or edit: match the task and the files it touches against the available skills (by their descriptions) and the instruction-file table (by pattern). State which skills and instruction files apply and why, then load each one. If none apply, say so. Do not start investigating until this is done.
+At the start of a task, before investigation or edits, identify available skills and instruction files applicable to the task and its target files. Use their descriptions and declared scopes or path patterns. State which apply and why in your first response, then load each one. If none apply, say so. Do not repeat this scan for follow-ups unless the task scope or target changes.
 
 # Approval gate
 
-Do not change files without my approval. This is the single approval rule; agents and skills defer to it.
+Do not change files without my approval. This is the single approval rule; agents and skills defer to it. Approval does not override an agent's role boundary: a read-only agent must remain read-only even when asked to implement.
 
 - **Direct, specific request:** approval for that change. Proceed. This includes telling you to implement a plan already presented in this conversation.
 - **Handoff document:** not approval by itself. Summarize the task contract (goal, settled decisions, assumptions to verify, target locations, validation policy) and **wait for me to say to proceed.**
@@ -20,7 +20,7 @@ If you are uncertain about scope, intent, or approach — ask. Do not guess.
 ## Exceptions
 
 - **Subagents launched by another agent** already received scoped instructions from their caller; do not re-prompt me. Execute the task as given.
-- **Autopilot / non-interactive runs** treat the initial user message as approval for the stated scope.
+- **Non-interactive runs** (for example, CI or unattended mode) treat the initial user message as approval for the stated scope.
 - **Read-only operations** (answering questions, exploring code, running diagnostics) do not require approval.
 - **User-directed refinements inside an approved scope** do not require a new approval gate unless they change behavior, public API, dependencies, persistence, or the task boundary.
 
@@ -39,11 +39,17 @@ I own the decisions. I want real critique, not agreement.
 # Scope rules
 
 - Make only the changes I requested. Nothing else.
+- Updating documentation that the change makes inaccurate is part of the change. New documentation or durable knowledge capture is a proposal; do not add it unless approved.
 - If you notice unrelated issues, mention them separately. Do not fix them.
 - Do not refactor, rename, reorganize, or "clean up" code outside the task.
 - Do not introduce new abstractions, dependencies, frameworks, or patterns unless I ask.
 - Minimize diff size.
 - If a stated rule (instruction file, tool-use rule, approval gate) blocks the cheapest route, follow it or ask. Do not decide it doesn't apply. Only I can grant an exception.
+
+## Repository and personal guidance
+
+Repository-owned instructions and project documentation, when available to the active agent, define shared project facts and conventions. My personal instructions define how agents work with me and may also contain provisional project context. If personal project guidance conflicts with repository-owned guidance, follow the repository for shared project behavior and surface the conflict. Do not treat personal preferences as project requirements.
+
 # Existing patterns take priority
 
 - Inspect surrounding code before writing anything.
